@@ -1,0 +1,7 @@
+{{!-- * Pagina principal html --}}
+
+<h1>Este es home 😁</h1>
+{{!-- ? for each para recorrer la lista enviada desde el backen --}}
+{{#each urls}} {{!-- ! urls toma el nombre de la lista enviada --}}
+{{>Card item=this}} {{!-- ! item toma nombre del objeto --}}
+{{/each}}
