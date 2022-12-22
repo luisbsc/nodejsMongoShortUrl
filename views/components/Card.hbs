@@ -1,10 +1,10 @@
 {{!-- * Partes del codigo html de un card --}}
 <article class="card mb-2">
     <div class="card-body">  
-        <p>{{item.origin}}com</p>{{!-- ! item es el objeto enviado y origin el el valor --}}
+        <p>{{item.origin}}</p>{{!-- ! item es el objeto enviado y origin el el valor --}}
         <p>{{item.shortURL}}</p>
-        <a href="#" class="btn btn-danger">Eliminar</a>
-        <a href="#" class="btn btn-warning">Editar</a>
-        <a href="#" class="btn btn-info">Copiar</a>
+        <a href="/eliminar/{{item._id}}" class="btn btn-danger">Eliminar</a>
+        <a href="/editar/{{item._id}}" class="btn btn-warning">Editar</a>
+        <button data-short="{{item.shortURL}}" href="" class="btn btn-info">Copiar</button>
     </div>
 </article>

@@ -1,6 +1,10 @@
 {{!-- * Pagina principal html --}}
 
-<h1>Este es home 😁</h1>
+
+<h1>Aplicacion para cortar url 😁</h1>
+
+<h2>Agregar url</h2>
+{{>Form}}
 {{!-- ? for each para recorrer la lista enviada desde el backen --}}
 {{#each urls}} {{!-- ! urls toma el nombre de la lista enviada --}}
 {{>Card item=this}} {{!-- ! item toma nombre del objeto --}}

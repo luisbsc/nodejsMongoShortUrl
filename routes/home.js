@@ -1,15 +1,13 @@
 const express =require("express");
+const { leerUrls, agregarUrl, eliminarUrl,editarUrlForm,editarUrl,redireccionamineto } = require("../controllers/homeController");
+const urlvalidar = require("../middlewares/urlValida");
 const router = express.Router();
 
-router.get("/", (req,res)=>{
-    const urls =[
-        {origin:"www.google.com",shortURL:"xdxdxxd1"},
-        {origin:"www.facebook.com",shortURL:"xdxdxxd2"},
-        {origin:"www.twuter.com",shortURL:"xdxdxxd3"}
-    ]
-    res.render("home",{urls:urls});// ! renderisar la pagina con los datos enviados por dicionarios
-    //res.send("Estas solicitando la ruta raiz😁")
-    //res.render("index.ejs")
-})
+router.get("/",leerUrls)
+router.post("/",urlvalidar,agregarUrl)
+router.get("/eliminar/:id", eliminarUrl)
+router.get("/editar/:id", editarUrlForm)
+router.post("/editar/:id",urlvalidar,editarUrl)
+router.get("/:shortUrl",redireccionamineto)
 
 module.exports= router

@@ -1,8 +1,9 @@
 const express = require("express")
 const app = express()//! Sevidor !
 const morgan = require("morgan")// ! Ver peticiones !
-const {create}=require("express-handlebars")
-
+require("dotenv").config() // ! variables de entorno
+const {create}=require("express-handlebars")// !plantillas
+require("./database/db")// ! base de datos
 // * sistema de plantillas de handlebear
 // ? para cambiar la extencion de handlebears a .hbs
 const hbs =create({
@@ -17,26 +18,27 @@ app.set("view engine",".hbs");
 app.set("views","./views");
 
 // * Creacion del servidor
-app.listen(3001,()=> console.log("servidor corriendo http://127.0.0.1:3001/ 👌")) //! Puerto del servidor !
+const PORT = process.env.PORT || 5000
+app.listen(PORT,()=> console.log("servidor corriendo http://127.0.0.1:5000/ 👌"+PORT)) //! Puerto del servidor !
 app.use(morgan("dev"))//! ver peticiones por consola !
 
-// * Archivos estaticos
 // | Middleware |
-
 //? Para poder optener datos por get => 
 app.use(express.urlencoded({extended: true})) 
 // * Metodos get 
-// | Inicio |
-
+// | urls |
 app.use("/",require("./routes/home"))
 app.use("/auth",require("./routes/auth"))
+// * Archivos estaticos
 app.use(express.static(__dirname+"/public"))//! enviar archivos publicos al servidor !
 
 
 
 
 
-
+app.get("/pr",(req,res)=>{
+    res.render("home")
+})
 
 
 
